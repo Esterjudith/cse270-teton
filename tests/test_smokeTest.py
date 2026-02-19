@@ -10,19 +10,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
-from webdriver_manager.firefox import GeckoDriverManager
-
 
 class TestSmokeTest():
   def setup_method(self, method):
     options = Options()
     options.add_argument("--headless")
-    options.binary_location = "/usr/bin/firefox-esr"
-    self.driver = webdriver.Firefox(
-        service=Service(GeckoDriverManager().install()),
-        options=options
-    )
+    self.driver = webdriver.Firefox(options=options) 
     self.vars = {}
   
   def teardown_method(self, method):
